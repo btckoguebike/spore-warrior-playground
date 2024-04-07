@@ -19,6 +19,9 @@ export function SchemaField({ fieldName, schema }: SchemaFieldProps) {
   } = useFormContext();
   const meta = schema.meta;
   //   TODO： 支持meta input
+  if (meta?.noForm) {
+    return null;
+  }
   // @ts-ignore
   const typeName = schema._def.typeName as ZodFirstPartyTypeKind;
   switch (typeName) {
@@ -28,7 +31,7 @@ export function SchemaField({ fieldName, schema }: SchemaFieldProps) {
         const tip = [meta?.label, meta?.description].filter((v) => Boolean(v)).join(': ');
         const parentKey = fieldName ? `${fieldName}.` : '';
         return (
-          <FormControl as="fieldset">
+          <FormControl as="fieldset" display="flex" flexDirection="column" gap={4}>
             {tip && <FormLabel as="legend"> {tip}</FormLabel>}
             {Object.entries(objSchema.shape).map(([key, type]) => {
               const subFieldName = parentKey + key;
