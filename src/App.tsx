@@ -2,11 +2,12 @@ import { ChakraProvider } from '@chakra-ui/react';
 
 import { RouterProvider } from 'react-router-dom';
 import { router } from './router';
+import { theme } from '@chakra-ui/theme';
 
 function App() {
   return (
     <>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <RouterProvider router={router} />
       </ChakraProvider>
     </>

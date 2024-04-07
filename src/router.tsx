@@ -1,8 +1,10 @@
-import { RouteObject, createBrowserRouter } from 'react-router-dom';
+import { RouteObject, createBrowserRouter, redirect } from 'react-router-dom';
 import { Home, loader } from './pages/Home';
 import { Page404 } from './pages/Page404';
 import { LayoutDispatcher } from './layouts/LayoutDispatcher';
 import { DefaultLayout } from './layouts/DefaultLayout';
+import { Resources } from './pages/Resources';
+import { Battle } from './pages/Battle';
 
 interface RouteMetaData {
   layout?: 'default';
@@ -26,8 +28,15 @@ export const routes: MyRouteObject[] = [
       {
         path: '',
         index: true,
-        loader: loader,
         Component: Home,
+      },
+      {
+        path: 'resources',
+        Component: Resources,
+      },
+      {
+        path: 'battle',
+        Component: Battle,
       },
       {
         path: '*',

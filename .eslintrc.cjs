@@ -17,5 +17,6 @@ module.exports = {
     ],
     "@typescript-eslint/ban-types": 0,
     "@typescript-eslint/no-unused-vars": 1,
+    "react-refresh/only-export-components": 0,
   },
 }

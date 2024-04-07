@@ -8,15 +8,33 @@ dependencies:
   '@chakra-ui/react':
     specifier: ^2.8.2
     version: 2.8.2(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@types/react@18.2.69)(framer-motion@11.0.20)(react-dom@18.2.0)(react@18.2.0)
+  '@chakra-ui/theme':
+    specifier: ^3.3.1
+    version: 3.3.1(@chakra-ui/styled-system@2.9.2)
   '@emotion/react':
     specifier: ^11.11.4
     version: 11.11.4(@types/react@18.2.69)(react@18.2.0)
   '@emotion/styled':
     specifier: ^11.11.0
     version: 11.11.0(@emotion/react@11.11.4)(@types/react@18.2.69)(react@18.2.0)
+  dexie:
+    specifier: ^4.0.1
+    version: 4.0.1
+  dexie-react-hooks:
+    specifier: ^1.1.7
+    version: 1.1.7(@types/react@18.2.69)(dexie@4.0.1)(react@18.2.0)
   framer-motion:
     specifier: ^11.0.20
     version: 11.0.20(react-dom@18.2.0)(react@18.2.0)
+  lodash-es:
+    specifier: ^4.17.21
+    version: 4.17.21
+  mobx:
+    specifier: ^6.12.3
+    version: 6.12.3
+  mobx-react-lite:
+    specifier: ^4.0.7
+    version: 4.0.7(mobx@6.12.3)(react-dom@18.2.0)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -26,8 +44,14 @@ dependencies:
   react-router-dom:
     specifier: ^6.22.3
     version: 6.22.3(react-dom@18.2.0)(react@18.2.0)
+  zod:
+    specifier: ^3.22.4
+    version: 3.22.4
 
 devDependencies:
+  '@types/lodash-es':
+    specifier: ^4.17.12
+    version: 4.17.12
   '@types/react':
     specifier: ^18.2.66
     version: 18.2.69
@@ -70,6 +94,9 @@ devDependencies:
   vite:
     specifier: ^5.2.0
     version: 5.2.4(sass@1.72.0)
+  vite-tsconfig-paths:
+    specifier: ^4.3.2
+    version: 4.3.2(typescript@5.4.3)(vite@5.2.4)
 
 packages:
 
@@ -1868,6 +1895,12 @@ packages:
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
     dev: true
 
+  /@types/lodash-es@4.17.12:
+    resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
+    dependencies:
+      '@types/lodash': 4.17.0
+    dev: true
+
   /@types/lodash.mergewith@4.6.7:
     resolution: {integrity: sha512-3m+lkO5CLRRYU0fhGRp7zbsGi6+BZj0uTVSwvcKU+nSlhjA9/QRNfuSGnD2mX6hQA7ZbmcCkzk5h4ZYGOtk14A==}
     dependencies:
@@ -1876,7 +1909,6 @@ packages:
 
   /@types/lodash@4.17.0:
     resolution: {integrity: sha512-t7dhREVv6dbNj0q17X12j7yDG4bD/DHYX7o5/DbDxobP0HnGPgpRz2Ej77aL7TZT3DSw13fqUTj8J4mMnqa7WA==}
-    dev: false
 
   /@types/parse-json@4.0.2:
     resolution: {integrity: sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==}
@@ -2298,6 +2330,22 @@ packages:
     resolution: {integrity: sha512-ypdmJU/TbBby2Dxibuv7ZLW3Bs1QEmM7nHjEANfohJLvE0XVujisn1qPJcZxg+qDucsr+bP6fLD1rPS3AhJ7EQ==}
     dev: false
 
+  /dexie-react-hooks@1.1.7(@types/react@18.2.69)(dexie@4.0.1)(react@18.2.0):
+    resolution: {integrity: sha512-Lwv5W0Hk+uOW3kGnsU9GZoR1er1B7WQ5DSdonoNG+focTNeJbHW6vi6nBoX534VKI3/uwHebYzSw1fwY6a7mTw==}
+    peerDependencies:
+      '@types/react': '>=16'
+      dexie: ^3.2 || ^4.0.1-alpha
+      react: '>=16'
+    dependencies:
+      '@types/react': 18.2.69
+      dexie: 4.0.1
+      react: 18.2.0
+    dev: false
+
+  /dexie@4.0.1:
+    resolution: {integrity: sha512-wSNn+TcCh+DuE2pdg058K3MhxA4g+IiZlW7yGz4cMd/t3z2rJXZcV3HDxZljbrICU2Iq0qY4UHnbolTMK/+bcA==}
+    dev: false
+
   /dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
@@ -2667,6 +2715,10 @@ packages:
       slash: 3.0.0
     dev: true
 
+  /globrex@0.1.2:
+    resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
+    dev: true
+
   /graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
     dev: true
@@ -2827,6 +2879,10 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
+
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
@@ -2874,6 +2930,29 @@ packages:
     dependencies:
       brace-expansion: 2.0.1
     dev: true
+
+  /mobx-react-lite@4.0.7(mobx@6.12.3)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-RjwdseshK9Mg8On5tyJZHtGD+J78ZnCnRaxeQDSiciKVQDUbfZcXhmld0VMxAwvcTnPEHZySGGewm467Fcpreg==}
+    peerDependencies:
+      mobx: ^6.9.0
+      react: ^16.8.0 || ^17 || ^18
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      mobx: 6.12.3
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /mobx@6.12.3:
+    resolution: {integrity: sha512-c8NKkO4R2lShkSXZ2Ongj1ycjugjzFFo/UswHBnS62y07DMcTc9Rvo03/3nRyszIvwPNljlkd4S828zIBv/piw==}
+    dev: false
 
   /ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
@@ -3342,6 +3421,19 @@ packages:
       typescript: 5.4.3
     dev: true
 
+  /tsconfck@3.0.3(typescript@5.4.3):
+    resolution: {integrity: sha512-4t0noZX9t6GcPTfBAbIbbIU4pfpCwh0ueq3S4O/5qXI1VwK1outmxhe9dOiEWqMz3MW2LKgDTpqWV+37IWuVbA==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+    peerDependencies:
+      typescript: ^5.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 5.4.3
+    dev: true
+
   /tslib@2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
     dev: false
@@ -3404,6 +3496,31 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /use-sync-external-store@1.2.0(react@18.2.0):
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /vite-tsconfig-paths@4.3.2(typescript@5.4.3)(vite@5.2.4):
+    resolution: {integrity: sha512-0Vd/a6po6Q+86rPlntHye7F31zA2URZMbH8M3saAZ/xR9QoGN/L21bxEGfXdWmFdNkqPpRdxFT7nmNe12e9/uA==}
+    peerDependencies:
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
+    dependencies:
+      debug: 4.3.4
+      globrex: 0.1.2
+      tsconfck: 3.0.3(typescript@5.4.3)
+      vite: 5.2.4(sass@1.72.0)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+    dev: true
+
   /vite@5.2.4(sass@1.72.0):
     resolution: {integrity: sha512-vjFghvHWidBTinu5TCymJk/lRHlR5ljqB83yugr0HA1xspUPdOZHqbqDLnZ8f9/jINrtFHTCYYyIUi+o+Q5iyg==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -3465,3 +3582,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zod@3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+    dev: false
