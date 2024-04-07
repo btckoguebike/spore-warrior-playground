@@ -2,6 +2,7 @@ import { ResourceType } from '@/meta/types';
 import { Dexie, Table } from 'dexie';
 import { ResourceCard } from './resources/ResourceCard';
 import { ResourceTypeObjectTypeMap } from './resources';
+import { get, isNil } from 'lodash-es';
 
 const resourceDbSchema: Record<ResourceType, string> = {
   card: '&id,name',
@@ -37,3 +38,36 @@ commonDb.open();
 Dexie.on('storagemutated', (...args) => {
   console.log('Dexie log', ...args);
 });
+
+export const getSetting = async <T>(name: 'global_resource_id', defaultValue: T) => {
+  const setting = await commonDb.setting.get(name);
+  if (!setting) {
+    await commonDb.setting.add({
+      name,
+      value: defaultValue as string,
+    });
+    return defaultValue;
+  }
+  return setting.value as T;
+};
+
+export const setSetting = async (name: string, value: number | string) => {
+  return commonDb.setting.update(name, {
+    name: name,
+    value: value,
+  });
+};
+
+export const getGlobalResourceId = async () => {
+  return getSetting('global_resource_id', 1e3);
+};
+
+export const increaseResourceId = async () => {
+  const id = await getGlobalResourceId();
+  const _id = id + 1;
+  await commonDb.setting.update('global_resource_id', {
+    name: 'global_resource_id',
+    value: _id,
+  });
+  return _id;
+};

@@ -1,3 +1,4 @@
+import { ResourceType } from '@/meta/types';
 import { z } from 'zod';
 
 export const ResourceActionSchema = z.object({
@@ -10,6 +11,10 @@ export const ResourceActionSchema = z.object({
   }),
   system_pool: z.array(z.number()).setMeta({
     description: '全局唯一 SYSTEM ID 列表',
+    input: 'resource',
+    inputArg: {
+      type: ResourceType.system,
+    },
   }),
 });
 
