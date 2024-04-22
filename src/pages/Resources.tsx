@@ -1,7 +1,6 @@
 import { ResourceEditor } from '@/components/ResourceEditor';
 import { ResourceTable } from '@/components/ResourceTable';
 import { ResourceType } from '@/meta/types';
-import { getGlobalResourceId, getSetting } from '@/models/db';
 import { Box, Flex, List, ListItem } from '@chakra-ui/react';
 import { useState } from 'react';
 import { useMap } from 'react-use';

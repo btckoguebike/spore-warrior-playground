@@ -1,4 +1,4 @@
-import { ZodType } from 'zod';
+import { ZodFirstPartyTypeKind, ZodOptional, ZodType } from 'zod';
 
 type ZodMetaData = {
   // 是否加入dexie索引
@@ -26,4 +26,24 @@ declare module 'zod' {
 ZodType.prototype.setMeta = function (this: ZodType, metadata: ZodMetaData) {
   this.meta = metadata;
   return this;
+};
+
+const wrapperTypes: ZodFirstPartyTypeKind[] = [
+  ZodFirstPartyTypeKind.ZodEffects,
+  ZodFirstPartyTypeKind.ZodOptional,
+  ZodFirstPartyTypeKind.ZodNullable,
+  ZodFirstPartyTypeKind.ZodDefault,
+  ZodFirstPartyTypeKind.ZodCatch,
+  ZodFirstPartyTypeKind.ZodPromise,
+  ZodFirstPartyTypeKind.ZodBranded,
+  ZodFirstPartyTypeKind.ZodPipeline,
+  ZodFirstPartyTypeKind.ZodReadonly,
+];
+export const getOriginalSchema = (zodType: ZodType): ZodType => {
+  const type = zodType._def.typeName as ZodFirstPartyTypeKind;
+  if (wrapperTypes.includes(type)) {
+    debugger;
+    return getOriginalSchema(zodType._def.schema || zodType._def.innerType);
+  }
+  return zodType;
 };

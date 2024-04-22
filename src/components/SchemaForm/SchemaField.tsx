@@ -4,24 +4,26 @@ import { FormControl, FormErrorMessage, FormHelperText, FormLabel, Input, Number
 import { useFormContext } from 'react-hook-form';
 import { ZodFirstPartyTypeKind, ZodObject, ZodType } from 'zod';
 import { SelectResource } from './SelectResource';
+import { getOriginalSchema } from '@/utils/zod';
 
 export type SchemaFieldProps = {
   fieldName: string;
   schema: ZodType;
 };
 
-export function SchemaField({ fieldName, schema }: SchemaFieldProps) {
+export function SchemaField({ fieldName, schema: propSchema }: SchemaFieldProps) {
   const {
     register,
     getValues,
     setValue,
     formState: { errors },
   } = useFormContext();
-  const meta = schema.meta;
+  const meta = propSchema.meta;
   //   TODO： 支持meta input
   if (meta?.noForm) {
     return null;
   }
+  const schema = getOriginalSchema(propSchema);
   // @ts-ignore
   const typeName = schema._def.typeName as ZodFirstPartyTypeKind;
   switch (typeName) {
@@ -75,7 +77,7 @@ export function SchemaField({ fieldName, schema }: SchemaFieldProps) {
 
         return (
           <SelectResource
-            {...inputArg}
+            {...(inputArg as any)}
             value={getValues(fieldName)}
             onChange={(v) => {
               console.log(fieldName, v);

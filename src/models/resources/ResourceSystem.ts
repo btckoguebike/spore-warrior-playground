@@ -40,10 +40,6 @@ export const ResourceSystemSchema = z.object({
   // }),
   args: z
     .string()
-    .setMeta({
-      label: '效果参数',
-      description: '这里暂时先使用代码进行编辑',
-    })
     .refine(
       (data) => {
         try {
@@ -55,7 +51,11 @@ export const ResourceSystemSchema = z.object({
       {
         message: '需要为 json 数组',
       },
-    ),
+    )
+    .setMeta({
+      label: '效果参数',
+      description: '这里暂时先使用代码进行编辑',
+    }),
   duration: z
     .object({
       trigger: z.number().min(0).max(38).setMeta({
@@ -72,5 +72,6 @@ export const ResourceSystemSchema = z.object({
       description: '标记是瞬间施放还是延迟触发施放',
     }),
 });
+console.log(ResourceSystemSchema);
 
 export type ResourceSystem = z.infer<typeof ResourceSystemSchema>;
