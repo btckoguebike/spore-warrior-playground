@@ -32,7 +32,7 @@ export function Resources(props: ResourcesProps) {
 
   return (
     <Flex alignItems="stretch" height="100%">
-      <Box width={200} borderRight="1px solid black">
+      <Box width={125} flex="none" borderRight="1px solid black">
         <List>
           {Object.keys(ResourceType).map((key) => {
             const currentValue = key as ResourceType;
